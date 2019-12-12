@@ -1,0 +1,51 @@
+{
+  "name": "antd-admin",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.13.4",
+    "babel-plugin-import": "^1.11.0",
+    "customize-cra": "^0.2.11",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.2",
+    "react-app-rewired": "^2.1.0",
+    "react-dom": "^16.8.2",
+    "react-redux": "^5.0.1",
+    "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
+    "react-scripts": "2.1.5",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "lint": "eslint src/ --ext .js,.jsx --ignore-pattern public --fix"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "eslint": "5.12.0",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-react": "^7.13.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "engineStrick": true
+}
