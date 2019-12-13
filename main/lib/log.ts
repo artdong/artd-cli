@@ -13,12 +13,13 @@ export enum LogType {
   debug = 'debug',
   warn = 'warn',
   fatal = 'fatal',
+  tip = 'tip'
 }
 
 interface LogTypeItem {
   type: LogType;
   color: string;
-  icon: string
+  icon?: string
 }
 
 interface LogMapFunction {
@@ -61,7 +62,11 @@ const logTypeList: LogTypeItem[] = [
     'type': LogType.fatal,
     'color': 'bgRed',
     'icon': '×'
-  }
+  },
+  {
+    'type': LogType.tip,
+    'color': 'cyan'
+}
 ];
 
 const logMapFunction: LogMapFunction = {};

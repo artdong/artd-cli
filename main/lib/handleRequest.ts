@@ -1,5 +1,4 @@
 import * as request from 'request';
-import * as inquirer from "inquirer";
 
 const {get} = request;
 
