@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 
 const inquirer = require('inquirer');
 const log = require('../lib/log');
@@ -11,7 +12,7 @@ const temps = ['vue-admin', 'antd-admin'];
 program
     .usage('<command> [template]')
     .version(pkg.version)
-    .parse(process.argv)
+    .parse(process.argv);
 
 program.on('--help', function () {
     help();
@@ -27,11 +28,11 @@ let config = [
             {
                 name: 'vue-admin',
                 value: 'vue-admin'
-              },
-              {
+            },
+            {
                 name: 'antd-admin',
                 value: 'antd-admin'
-              }
+            }
         ],
         validate: function (answer) {
             if (answer.length !== 1) {
@@ -55,7 +56,7 @@ if(commands[0]) {
  * @param  {String} command 命令脚本
  * @param  {Object} env     运行环境
  */
-function runCommand(commands, env) {
+function runCommand(commands) {
     const firstCommand = commands[0];
     const secondCommand = commands[1];
     switch(firstCommand) {
@@ -68,21 +69,21 @@ function runCommand(commands, env) {
                 init({
                     template,
                     dirPath
-                })
+                });
             }else {
                 program.help(); 
             }
         }else {
             inquirer.prompt(config)
-            .then(data => {
-                let template = data.select[0];
-                let dirPath = data.select[0];
-                log.info(`项目选择成功，正在开始为您初始化项目(${template}).......`);
-                init({
-                    template,
-                    dirPath
-                })
-            });
+                .then(data => {
+                    let template = data.select[0];
+                    let dirPath = data.select[0];
+                    log.info(`项目选择成功，正在开始为您初始化项目(${template}).......`);
+                    init({
+                        template,
+                        dirPath
+                    });
+                });
         }
         break;
     default:
