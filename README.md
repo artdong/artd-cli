@@ -8,10 +8,7 @@
 
 ## 使用
 
-```
-artd start -------- 开启cli模板选择
-
-artd start <template>(vue-admin/antd-admin) --------- 初始化项目模板
-```                                   
+在您需要构建项目的目录， 直接使用命令行 **`artd -s`**                                       
+查看帮助 **`artd`或者`artd --help`**                                    
                     
 ![screenshot.png](./static/img/screenshot.png)

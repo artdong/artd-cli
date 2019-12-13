@@ -1,39 +1,45 @@
 {
   "name": "artd-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "前端项目构建工具",
-  "main": "./bin/artd.js",
+  "main": "./main/bin/artd.js",
   "directories": {
     "lib": "lib"
   },
+  "repository": "https://github.com/artdong/artd-cli",
   "scripts": {
-    "lint": "eslint bin/ lib/ --ext .js --ignore-pattern public --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "pre-commit": [
-    "lint"
-  ],
-  "dependencies": {
-    "chalk": "^2.1.0",
-    "commander": "^2.9.0",
-    "fs-extra": "^4.0.2",
-    "inquirer": "^6.2.0"
+    "prepare": "npm run build",
+    "type-check": "tsc",
+    "commit": "git-cz",
+    "build": "tsc"
   },
   "bin": {
-    "artd": "./bin/artd.js"
+    "artd": "./main/bin/artd.js"
   },
-  "author": "artdong",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "author": "artdong 1029278668@qq.com",
   "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "commander": "^2.11.0",
+    "download-git-repo": "^1.1.0",
+    "fs-extra": "^4.0.3",
+    "inquirer": "^6.2.0",
+    "ora": "^3.4.0",
+    "request": "^2.88.0",
+    "typescript": "^3.4.5",
+    "user-home": "^2.0.0"
+  },
   "devDependencies": {
-    "cssnano": "^3.10.0",
-    "directory-copy": "^0.1.0",
-    "eslint": "^6.7.2",
-    "mock2easynew": "^0.0.3",
-    "optimize-css-assets-webpack-plugin": "^3.2.0",
-    "pre-commit": "^1.2.2",
-    "uglifyjs-webpack-plugin": "^1.1.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.5"
+    "@types/chalk": "^2.2.0",
+    "@types/fs-extra": "^5.1.0",
+    "@types/node": "^11.13.8",
+    "commitizen": "^3.0.7",
+    "cz-conventional-changelog": "^2.1.0"
   },
   "keywords": [
     "cli",
