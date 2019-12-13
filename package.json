@@ -1,6 +1,6 @@
 {
   "name": "artd-cli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "前端项目构建工具",
   "main": "./bin/artd.js",
   "directories": {
