@@ -6,16 +6,18 @@ const init = require('../lib/console/init');
 const program = require('commander');
 const pkg = require('../package.json');
 
+const temps = ['vue-admin', 'antd-admin'];
+
 program
-    .usage('--start')
+    .usage('<command> [template]')
     .version(pkg.version)
-    .option('-s, --start', '开启cli模板选择')
     .parse(process.argv);
 
 program.on('--help', function () {
     console.log('  示例(Examples):');
     console.log();
-    console.log('    art --start/-s');
+    console.log('    artd start: ', '开启cli模板选择');
+    console.log('    artd start <template>(vue-admin/antd-admin): ', '初始化项目模板');
 });
 
 let config = [
@@ -43,19 +45,52 @@ let config = [
     }
 ];
 
-if (program.start) {
-    inquirer.prompt(config)
-        .then(data => {
-            log.info('项目选择成功，正在开始给您初始化项目.......');
-            let template = data.select[0];
-            let dirPath = data.select[0];
-            init({
-                template,
-                dirPath
-            })
-        });
-} else {
+const commands = program.args;
+
+if(commands[0]) {
+    runCommand(commands, program);
+}else{ // 当没有时,默认输出help信息
     program.help();
+}
+
+/**
+ * 运行命令
+ * @param  {String} command 命令脚本
+ * @param  {Object} env     运行环境
+ */
+function runCommand(commands, env) {
+    const firstCommand = commands[0];
+    const secondCommand = commands[1];
+    switch(firstCommand) {
+    case 'start':
+        if(secondCommand) {
+            if(temps.includes(secondCommand)) {
+                log.info(`正在开始为您初始化项目(${secondCommand}).......`);
+                let template = secondCommand;
+                let dirPath = secondCommand;
+                init({
+                    template,
+                    dirPath
+                })
+            }else {
+                program.help(); 
+            }
+        }else {
+            inquirer.prompt(config)
+            .then(data => {
+                let template = data.select[0];
+                let dirPath = data.select[0];
+                log.info(`项目选择成功，正在开始为您初始化项目(${template}).......`);
+                init({
+                    template,
+                    dirPath
+                })
+            });
+        }
+        break;
+    default:
+        program.help();
+    } 
 }
 
 
