@@ -11,13 +11,10 @@ const temps = ['vue-admin', 'antd-admin'];
 program
     .usage('<command> [template]')
     .version(pkg.version)
-    .parse(process.argv);
+    .parse(process.argv)
 
 program.on('--help', function () {
-    console.log('  示例(Examples):');
-    console.log();
-    console.log('    artd start: ', '开启cli模板选择');
-    console.log('    artd start <template>(vue-admin/antd-admin): ', '初始化项目模板');
+    help();
 });
 
 let config = [
@@ -91,6 +88,15 @@ function runCommand(commands, env) {
     default:
         program.help();
     } 
+}
+
+// 自定义 help
+function help() {
+    console.log();
+    console.log('  Global Commands:');
+    console.log();
+    log.tip('    artd start: ', '开启cli模板选择');
+    log.tip('    artd start <template>(vue-admin/antd-admin): ', '初始化项目模板');
 }
 
 
